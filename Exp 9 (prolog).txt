@@ -1,0 +1,85 @@
+Question 1
+
+facts:
+fruit(mango).
+fruit(banana).
+fruit(orange).
+has(seema, mango).
+has(payal, banana).
+has(deepak, orange).
+
+Queries:
+fruit(X).
+has(seema,X).
+has(X,banana).
+has(deepak,_).
+has(X,mango), has(Y,banana), has(Z,orange).
+
+Question 2:
+
+facts:
+man(anand).
+man(arun).
+woman(anuradha).
+woman(pooja).
+parent(anand, parth).
+parent(arun, anuradha).
+parent(pooja, anuradha).
+parent(anuradha, parth).
+father(F,A):- man(F), parent(F,A).
+mother(M, A):- woman(M), parent(M, A).
+
+Queries:
+father(X,parth).
+mother(X,parth).
+̀mother(X,_).
+father(X,_).
+parent(X,Y).
+
+Question 3
+
+facts:
+result(gaurav, 9.2).
+result(anooj, 8.2).
+result(chinmay, 7.3).
+result(piyush, 5.7). result(parth, 8.9).
+result(ankit, 6.3).
+result(jay, 4.2).
+result(tanuja, 6.2).
+result(pooja, 8.2).
+result(asmita, 7.2).
+getresult:-
+write("Whose result do you want to know"),nl,read(X),nl,
+result(X, Y),nl,
+write("this is the result"),nl,
+write(Y).
+
+Queries:
+getresult.
+
+
+Question 4:
+
+facts:
+factorial(0,1).
+factorial(N,X):-factorial(N1,X1),N is N1+1,X is X1*N.
+
+Queries:
+factorial(6,X).
+factorial(3,X).
+factorial(9,X).
+
+
+Question 5:
+
+facts:
+fibonacci(1,1).
+fibonacci(2,1).
+fibonacci(N,X):-N>=3,N1 is N-1,N2 is N-2,
+fibonacci(N1,X1),fibonacci(N2,X2),X is X1+X2.
+
+Queries:
+fibonacci(6,X).
+fibonacci(5,X).
+fibonacci(8,X).
+

@@ -1,0 +1,31 @@
+import random
+
+def objective_function(x, y):
+    return -((x - 3) ** 2 + (y - 2) ** 2)
+
+def hill_climbing(start_x, start_y, step_size, max_iterations):
+    current_x, current_y = start_x, start_y
+    for i in range(max_iterations):
+        current_score = objective_function(current_x, current_y)
+        neighbors = []
+        for dx in [-step_size, 0, step_size]:
+            for dy in [-step_size, 0, step_size]:
+                if dx == 0 and dy == 0:
+                    continue
+                neighbor_x, neighbor_y = current_x + dx, current_y + dy
+                neighbor_score = objective_function(neighbor_x, neighbor_y)
+                neighbors.append((neighbor_x, neighbor_y, neighbor_score))
+        neighbors.sort(key=lambda x: x[2], reverse=True)
+        best_neighbor = neighbors[0]
+        if best_neighbor[2] > current_score:
+            current_x, current_y = best_neighbor[0], best_neighbor[1]
+        else:
+            break
+    return current_x, current_y
+
+start_x = float(input("Enter starting x-coordinate: "))
+start_y = float(input("Enter starting y-coordinate: "))
+step_size = float(input("Enter step size: "))
+best_x, best_y = hill_climbing(start_x, start_y, step_size, max_iterations=100)
+print("Best solution: x = {:.2f}, y = {:.2f}, score = {:.2f}".format(best_x, best_y,
+objective_function(best_x, best_y)))
